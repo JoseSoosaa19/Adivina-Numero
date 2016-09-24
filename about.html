@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Juego Adivina</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">José Sosa</a>
+          </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>271629</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+	<!-- +++++ Welcome Section +++++ -->
+	<div id="ww">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 centered">
+					<img src="assets/img/mdl2.png" alt="mld" height="250">
+					<h1>Adivina un Número</h1>
+
+          <script>
+              // Variables Globales para Nodos DOM
+           var cuenta, valor, oculto, fondo, display, imagen, cancion, respuesta;
+           var max_intento = 10; // Cte configuracion
+          function init() {
+             cuenta = 1;
+             oculto = Math.floor(Math.random()*1001);
+             valor = document.getElementById("num");
+             fondo = document.getElementById("fondo");
+             display = document.getElementById("txt");
+             imagen = document.getElementById("imagen");
+             //cancion = document.getElementById("cancion");
+             numero = document.getElementById("numero");
+             respuesta = document.getElementById("respuesta").innerHTML;
+             mas = document.getElementById("mas");
+             menos = document.getElementById("menos");
+             win = document.getElementById("win");
+             lost = document.getElementById("lost");
+             valor.focus();
+             valor.value = ""; // RESET
+          }
+          function print(str) {
+              nodo = document.createTextNode(str);
+              display.replaceChild(nodo,display.firstChild);
+          }
+          function reload(){
+            location.reload();
+          }
+          function procesa( num ) {
+              if ( cuenta <= max_intento )
+              {
+                  if ( num < oculto ) {
+                      print(cuenta+') Anota número MAYOR ');
+                      fondo.style.backgroundColor="#004400";
+                      imagen.src="assets/img/up.gif";
+                      mas.play();
+                      respuesta += '<br> El numero es mayor que: '+ num;
+                  }
+                  else if ( num > oculto ) {
+                      print(cuenta+') Anota núm. menor ');
+                      fondo.style.backgroundColor="#440000";
+                      imagen.src="assets/img/down.gif";
+                      menos.play();
+                      respuesta += '<br> El numero es menor que: '+ num;
+                  }
+                  else {
+                      print('GANASTE!!');
+                      fondo.style.backgroundColor="#000044";
+                      imagen.src="assets/img/ganaste.jpg";
+                      win.play();
+                      setTimeout(reload,10000);
+                      }
+			            //print(num);
+                  cuenta++;
+                  valor.value = ""; // RESET
+                  valor.focus();
+              }
+              else {
+                  print (cuenta+') P E R D I S T E');
+                  alert('El Juego Inicia otra vez');
+                  imagen.src="assets/img/perdiste.jpg"
+                  lost.play();
+                  setTimeout(reload,10000);
+              }
+              document.getElementById("respuesta").innerHTML = respuesta;
+          }
+
+          </script>
+
+          </head>
+
+          <body id="fondo" onload="init();">
+              <br/>
+              <div id="txt">Adivina un número del 1 al 1000</div>
+              <form>
+                   Número: <input id="num" type="number" maxlength="4" value="" />
+                  <br/>
+                  <input type="button" onclick="procesa(num.value);" value="Aceptar" />
+              </form>
+              <img id="imagen" src="assets/img/adivina.jpg" height="200"/>
+              <div id="respuesta" class="">
+              </div>
+          </body>
+
+
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+
+
+	<!-- +++++ Information Section +++++ -->
+
+	<div class="container pt">
+		<div class="row mt centered">
+			<div class="col-lg-3">
+				<span class="glyphicon glyphicon-book"></span>
+				<p>Adivina un numero es un juego muy simple.</p>
+        <div id="respuesta" class="">
+
+        </div>
+			</div>
+
+			<div class="col-lg-3">
+				<span class="glyphicon glyphicon-user"></span>
+				<p>Contactenos para conseguir el juego .</p>
+			</div>
+
+			<div class="col-lg-3">
+				<span class="glyphicon glyphicon-fire"></span>
+				<p>Si tiene algun problema puede llamar a soporte.</p>
+			</div>
+
+			<div class="col-lg-3">
+				<span class="glyphicon glyphicon-globe"></span>
+				<p>Conseguir ayuda en linea.</p>
+			</div>
+		</div><!-- /row -->
+
+		<div class="row mt">
+			<div class="col-lg-6">
+				<h4>ADIVINA UN NUMERO</h4>
+				<p>Descripcion de juego</p>
+        <script>
+        function impresion(num){
+        print('Hola mundo');
+      }
+        </script>
+			</div><!-- /colg-lg-6 -->
+
+			<div class="col-lg-6">
+				<h4>HABILIDADES</h4>
+				Raznomaiento
+				<div class="progress">
+					<div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+						<span class="sr-only">60% Complete</span>
+					</div>
+				</div>
+
+				Matematico
+				<div class="progress">
+					<div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+						<span class="sr-only">80% Complete</span>
+					</div>
+				</div>
+
+				Logico
+				<div class="progress">
+					<div class="progress-bar progress-bar-theme" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
+						<span class="sr-only">95% Complete</span>
+					</div>
+				</div>
+
+			</div><!-- /col-lg-6 -->
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+
+	<!-- FOOTER SECTION -->
+
+	<div id="footer">
+		<div class="container">
+
+      <!-- CANCION -->
+
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Cancion</h4>
+					<audio id="cancion" src="assets/img/Super Mario.mp3" autoplay loop="true" controls></a>
+          <audio id="mas" src="assets/img/upmusic.mp3"></a>
+          <audio id="menos" src="assets/img/downmusic.mp3"></a>
+          <audio id="win" src="assets/img/Win Game.mp3"></a>
+          <audio id="lost" src="assets/img/Game Over.mp3"></a>
+				</div><!-- /col-lg-4 -->
+        <!-- REDES -->
+
+				<div class="col-lg-4">
+					<h4>Redes</h4>
+					<p>
+						<a href="#">Youtube</a><br/>
+						<a href="#">Twitter</a><br/>
+						<a href="#">Facebook</a>
+					</p>
+				</div><!-- /col-lg-4 -->
+
+		</div>
+	</div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
